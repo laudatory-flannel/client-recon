@@ -37,6 +37,21 @@ angular.module('starter.controllers', ['client-recon.services'])
   };
 })
 
+.controller('AddFriendCtrl', function($scope) {
+  $scope.friends = {
+    name: null,
+    title: null,
+    company: null,
+    email: null,
+    phone: null,
+    birthday: null,
+    interests: null,
+    img: null,
+    instagramUrl: null,
+    twitterUrl:null,
+    tumblrUrl:null
+  };
+})
 // .controller('EditCtrl', function($stateParams, $scope, $timeout, Friends) {
 //   // TEMPLATE FOR DATA
 //   //this.data = AppState.state;
