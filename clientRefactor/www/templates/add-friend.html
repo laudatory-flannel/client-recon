@@ -1,0 +1,75 @@
+<ion-view view-title="Add">
+ 
+  <ion-nav-buttons side="primary">
+    <button class="button button-clear" ui-sref="tempTab.home({id: friend.userid})"> <i class="icon ion-home"></i></button>
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-list>
+    <!-- Nav Bar -->
+    <div class="bar bar-subheader">
+      <h2 class="title">Add Friend</h2>
+    </div>
+    <!-- Input -->
+    </ion-list>
+
+    <div class="list list-inset padding">
+      <label class="item item-input item-stacked-label">
+      <span class="input-label">Name</span>
+        <input type="text" placeholder="friends.name">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Title</span>
+        <input type="text" placeholder="friends.title">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Company</span>
+        <input type="text" placeholder="friends.company">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Email</span>
+        <input type="email" placeholder="friends.email">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Phone number</span>
+        <input type="number" placeholder="friends.phone">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Date of Birth</span>
+        <input type="date" placeholder="friends.birthday">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Interests</span>
+        <input type="text" placeholder="friends.interests">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Image url</span>
+        <input type="text" placeholder="friends.img">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <i class="icon ion-social-twitter-outline"></i><span class="input-label">&nbsp Twitter url</span>
+        <input type="text" placeholder="friends.twitterUrl">
+      </label>
+      <br>
+      <label class="item item item-input item-stacked-label">
+        <i class="icon ion-social-instagram-outline"></i><span class="input-label">&nbsp Instagram url</span>
+        <input type="text" placeholder="friends.instagramUrl">
+      </label>
+      <br>
+      <label class="item item-input item-stacked-label">
+        <i class="icon ion-social-tumblr-outline"></i><span class="input-label">&nbsp Tumblr url</span>
+        <input type="text" placeholder="friends.tumblrUrl">
+      </label>
+
+    <button class="button button-full button-positive" ng-click="submit()">Save</button>
+
+  </ion-content> 
+</ion-view>
