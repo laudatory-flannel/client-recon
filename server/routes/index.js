@@ -38,6 +38,7 @@ module.exports = function(app, express, passport) {
 
 /* =============== FRIEND ROUTES ========================= */
 	app.post('/api/users/:userId/friends', function (req, res) {
+		console.log(req.body);
 		 controller.friend.addOne(req.params.userId, req.body, res);
 	});
 

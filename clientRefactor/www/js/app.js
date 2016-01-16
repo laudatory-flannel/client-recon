@@ -66,12 +66,10 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   })
 
   .state('addFriend', {
-    url: '/addFriend',
-    views: {
-      templateUrl: 'templates/add-friend.html',
-      controller: 'AddFriendCtrl',
+    url: '/addFriend/:id',
+    templateUrl: 'templates/add-friend.html',
+    controller: 'AddFriendCtrl',
       // authenticate: true
-    }
   });
 
   $urlRouterProvider.otherwise('/login');

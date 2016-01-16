@@ -9,6 +9,7 @@ angular.module('starter.controllers', ['client-recon.services'])
 .controller('HomeCtrl', function($scope, $stateParams, Friends) {
 
   $scope.moveText = "Move";
+  $scope.userId = $stateParams.id;
 
   $scope.showOrderButton = false;
   $scope.changeReorder = function(){
@@ -37,9 +38,11 @@ angular.module('starter.controllers', ['client-recon.services'])
   };
 })
 
-<<<<<<< HEAD
 .controller('AddFriendCtrl', function($scope, $stateParams, Friends) {
+  $scope.userId = $stateParams.id;
+
   $scope.friends = {
+    user_id: $stateParams.id,
     name: null,
     title: null,
     company: null,
@@ -48,12 +51,13 @@ angular.module('starter.controllers', ['client-recon.services'])
     birthday: null,
     interests: null,
     img: null,
-    instagramUrl: null,
-    twitterUrl:null,
-    tumblrUrl:null
+    instagram_username: null,
+    twitter_username:null,
+    tumblr_username:null
   };
 
   $scope.submit = function() {
+    console.log($scope.friends);
     Friends.addOne($stateParams.id, $scope.friends);
     console.log('Saving...');
   };
@@ -85,8 +89,6 @@ angular.module('starter.controllers', ['client-recon.services'])
 //   };
 // })
 
-=======
->>>>>>> 76a57a62f4033e4ad7a7bc5a8a3e3021421e72ea
 .controller('PostsCtrl', function($stateParams, $scope, Friends){
   console.log('got to posts controller');
   $scope.loading = true;

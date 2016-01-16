@@ -12,7 +12,7 @@ servicesModule
 
   // ---- Export functions ----
   var addOne = function(user_id, clientObj){
-    return $http.post(SERVER_ROOT + '/api/users/' + user_id + '/clients', clientObj)
+    return $http.post(SERVER_ROOT + '/api/users/' + user_id + '/friends', clientObj)
     .then(getData);
   };
 
