@@ -28,58 +28,58 @@ module.exports = function(tumblrUsername, twitterUsername, instagramUsername, sm
 
   var results = [];
 
-  // var tumblrUrl = tumblrUrl || 'http://rachel6bilson.tumblr.com/';
-  // var twitterUrl = twitterUrl || 'https://twitter.com/rachelbilson_6/';
-  // var instagramUrl = instagramUrl || 'https://www.instagram.com/rachel6bilson/';
-  var tumblrUrl = (tumblrUsername || 'rachel6bilson') + '.tumblr.com';
-  var twitterUrl = 'https://twitter.com/' + (twitterUsername || 'rachelbilson_6');
-  var instagramUrl = 'https://www.instagram.com/' + (instagramUsername || 'rachel6bilson');
+  // var tumblrUrl = (tumblrUsername || 'rachel6bilson') + '.tumblr.com';
+  // var twitterUrl = 'https://twitter.com/' + (twitterUsername || 'rachelbilson_6');
+  // var instagramUrl = 'https://www.instagram.com/' + (instagramUsername || 'rachel6bilson');
 
   ////////////////////////////
 
-  function shuffle(o){
-    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+  var tumblrUrl = ('rachel6bilson') + '.tumblr.com';
+  var twitterUrl = 'https://twitter.com/' + ('rachelbilson_6');
+  var instagramUrl = 'https://www.instagram.com/' + ('rachel6bilson');
+
+
+  var shuffle = function(o){
+    for (var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
     return o;
-  }
+  };
 
-  async.parallel([
-    function(callback) {
-      console.log('IN TUMBLR');
-      var blog = new tumblr.Blog(tumblrUrl, oauth);
-      blog.posts({limit: 6}, function(error, response) {
-
+  var tumblrAsync = function(callback) {
+    console.log('IN TUMBLR');
+    var blog = new tumblr.Blog(tumblrUrl, oauth);
+    blog.posts({limit: 6}, function(error, response) {
       if (error) {
         throw new Error(error);
       }
 
       var posts = response.posts;
-
       posts.forEach(function(item) {
         if (item.type === 'photo') {
-
           results.push({
             source: 'tumblr',
             type: 'photo',
             text: 'Re-blogged: ' + item.summary,
-            imageUrl: 'http://i.imgur.com/RMUDK4n.png',
-            postUrl: item.post_url
+            imageUrl: 'http://i.imgur.com/H0Ojc8f.png',
+            postUrl: item.post_url,
+            logoImage: 'data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw=='
           });
-
         } else if (item.type === 'text') {
           results.push({
             source: 'tumblr',
             type: 'text',
             text: 'New post: ' + item.summary,
-            imageUrl: 'http://i.imgur.com/RMUDK4n.png',
-            postUrl: item.post_url
+            imageUrl: 'http://i.imgur.com/H0Ojc8f.png',
+            postUrl: item.post_url,
+            logoImage: 'data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw=='
           });
         }
       });
+
       callback();
     });
-  },
+  };
 
-  function(callback) {
+  var twitterAsync = function(callback) {
     console.log('IN TWITTER');
     console.log('SCREENNAME', twitterUrl.slice(20) )
     params = { screen_name: twitterUrl.slice(20)};
@@ -93,17 +93,18 @@ module.exports = function(tumblrUsername, twitterUsername, instagramUsername, sm
           results.push({
             source: 'twitter',
             type: 'text',
-            text: 'Just tweeted: ' + item.text,
-            imageUrl: 'http://i.imgur.com/kRkImN3.png',
-            postUrl: twitterUrl + 'status/' + item.id_str
+            text: 'New tweet: ' + item.text,
+            imageUrl: 'http://i.imgur.com/klg52Ih.png',
+            postUrl: twitterUrl + 'status/' + item.id_str,
+            logoImage: 'data:image/png;base64,R0lGODlhFAAUAIAAAP///wAAACH5BAEAAAAALAAAAAAUABQAAAIRhI+py+0Po5y02ouz3rz7rxUAOw=='
           });
         });
         callback();
       }
     });
-  },
+  };
 
-  function(callback) {
+  var instagramAsync = function(callback) {
     console.log('IN INSTAGRAM')
     var url = instagramUrl;
 
@@ -120,16 +121,21 @@ module.exports = function(tumblrUsername, twitterUsername, instagramUsername, sm
          results.push({
             source: 'instagram',
             type: 'photo',
-            text: 'New Instagram post!',
+            text: 'New Instagram!',
             imageUrl: post.display_src,
-            postUrl: 'https://www.instagram.com/p/' + post.code
+            postUrl: 'https://www.instagram.com/p/' + post.code,
+            logoImage: 'http://orig09.deviantart.net/bef7/f/2015/017/a/c/instagram_logo__transparent_background__by_instahack-d8e94oc.png'
           });
       });
       callback();
     });
-  }], function() {
+  };
+
+  async.parallel([tumblrAsync, twitterAsync, instagramAsync], function() {
     console.log('ASYNC COMPLETE', results.length, results);
     smCallback(shuffle(results));
   });
 
 }; // final closing
+
+// module.exports('','','',function(){})

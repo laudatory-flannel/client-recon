@@ -16,9 +16,9 @@ module.exports = function(app, express, passport) {
 	app.get('/login-verify', passport.authenticate('google', 
 		{
 			//successRedirect: ('/home/'),
-			failureRedirect: '/tempTab/login'
+			failureRedirect: '/login'
 		}), function (req, res) {
-		res.redirect('http://localhost:8100/#/tempTab/home/' + req.user.id);
+		res.redirect('http://localhost:8100/#/home/' + req.user.id);
 	});
 
 	// THIS IS JUNK I CONJURED UP FOR THE SAKE OF FIXING THE ERROR
@@ -64,6 +64,27 @@ module.exports = function(app, express, passport) {
 	app.get('/api/friends/:friendId/gifts', function(req, res) {
 		controller.friend.getGifts(req.params.friendId, res);
 	});
+
+	/* =============== EVENT ROUTES ========================= */
+	app.post('/api/friends/:friendId/events', function (req, res) {
+		 controller.event.addOne(req.params.friendId, req.body, res);
+	});
+
+	app.get('/api/friends/:friendId/events', function (req, res) {
+		controller.event.getAllForFriend(req.params.friendId, res);
+	});
+
+	app.get('/api/events/:eventId', function (req, res) {
+		controller.event.getOne(req.params.eventId, res);
+	});
+
+	app.put('/api/events/:eventId', function (req, res) {
+		controller.event.updateOne(req.params.eventId, req.body, res);
+	});
+
+	app.delete('/api/events/:eventId', function (req, res) {
+		controller.event.deleteOne(req.params.eventId, req.body, res);
+	});	
 	
 	function ensureAuthenticated(req, res, next) {
 	  if (req.isAuthenticated()) { return next(); }

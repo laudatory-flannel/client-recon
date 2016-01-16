@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
+angular.module('starter', ['ionic', 'starter.controllers'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -17,31 +17,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   $stateProvider
 
-  .state('tempTab', {
-    url: '/tempTab',
-    abstract: true, 
-    templateUrl: 'templates/tempTabs.html'
-  })
-
-  .state('tempTab.login', {
+  .state('login', {
     url: '/login',
-    views: {
-      'login': {
-        templateUrl: 'templates/login.html',
-        controller: 'LoginCtrl'
-      }
-    }
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
   })
 
-  .state('tempTab.home', {
+  .state('home', {
     url: '/home/:id', //user id
-    views: {
-      'home': {
-        templateUrl: 'templates/home.html',
-        controller: 'HomeCtrl',
+    templateUrl: 'templates/home.html',
+    controller: 'HomeCtrl',
         // authenticate: true
-      }
-    }
+
   })
 
   // .state('tab', {
@@ -87,7 +74,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   });
 
-  $urlRouterProvider.otherwise('tempTab/login');
+  $urlRouterProvider.otherwise('/login');
 
 });
 

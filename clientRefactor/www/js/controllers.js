@@ -37,6 +37,7 @@ angular.module('starter.controllers', ['client-recon.services'])
   };
 })
 
+<<<<<<< HEAD
 .controller('AddFriendCtrl', function($scope, $stateParams, Friends) {
   $scope.friends = {
     name: null,
@@ -84,6 +85,8 @@ angular.module('starter.controllers', ['client-recon.services'])
 //   };
 // })
 
+=======
+>>>>>>> 76a57a62f4033e4ad7a7bc5a8a3e3021421e72ea
 .controller('PostsCtrl', function($stateParams, $scope, Friends){
   console.log('got to posts controller');
   $scope.loading = true;
@@ -94,6 +97,7 @@ angular.module('starter.controllers', ['client-recon.services'])
   })
 
   // Eventually will just directly query server for posts
+
   Friends.getPosts($stateParams.id)
   .then(function(posts) {
     $scope.loading = false;
@@ -133,12 +137,42 @@ angular.module('starter.controllers', ['client-recon.services'])
   //   })
 })
 
-.controller('EventsCtrl', function($scope, $stateParams, Friends) {
+.controller('EventsCtrl', function($scope, $stateParams, Friends, Events, $location) {
+  $scope.newEvent = {
+    name: null,
+    date: null
+  };
+  
+  var getEvents = function() {
+    Events.getAllForFriend($stateParams.id)
+    .then(function(events) {
+      $scope.events = events;
+    });
+  }
+
+  $scope.submitForm = function() {
+    console.log("submitting form", $stateParams);
+
+    Events.addOne($stateParams.id, $scope.newEvent)
+    .then(function(res) {
+      getEvents();
+    });
+  };
+
   Friends.getOne($stateParams.id)
   .then(function(friends) {
     $scope.friend = friends[0];
     console.log($scope.friend);
-  })
+  });
+
+  getEvents();
+})
+
+.controller('LinkController', function($scope, $stateParams) {
+  
+  $scope.clickLink = function(input) {
+    console.log('CLICKED LIIIINNNNNKKKKKKKKK!');
+  };
 
 })
 

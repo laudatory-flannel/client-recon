@@ -5,7 +5,7 @@
   </ion-nav-buttons>
 
   <ion-nav-buttons side="secondary">
-    <button class="button button-clear" ui-sref="edit({id: friends.id})"> <i class="icon ion-edit"></i>
+    <button class="button button-clear" ui-sref="edit({id: friend.id})"> <i class="icon ion-edit"></i>
     </button>
   </ion-nav-buttons>
 
@@ -31,17 +31,21 @@
     </div>
 
 <!-- .................................. -->
-    <div class="row" ng-repeat="post in posts" ng-if="$index % 3 === 0">
+
+
+    <div class="row" ng-repeat="image in posts" ng-if="$index % 3 === 0">
  <!--        <div class="col col-33" ng-style= "{'background-image':'url(' + posts[$index].imageUrl + ')'}"  ng-if="$index < posts.length"> 
             <h11>{{posts[$index].text.substring(0,40)}} + ...</h11>
-        </div> -->
+B</div> -->
 
       
         <div class="col col-33" border-radius='15px' ng-if="$index < posts.length">
           <a href="#" onclick="window.open('http://www.google.com', '_system', 'location=yes'); return false;"> <!-- {{item.imageUrl}} -->
-            <img ng-src="{{posts[$index].imageUrl}}" width="100%" />
+            <!-- <img class='overlap' ng-src="{{posts[$index].logoImage}}" width="100%" /> -->
+            <img class='underlap' ng-src="{{posts[$index].imageUrl}}" width="100%" />
             <div class='description'>
-              <p class='description_content'>{{posts[$index].text.substring(0,25)}}...</p>
+              <p class='description_content'>{{posts[$index].text.substring(0,45)}}...</p>
+             
             </div>
           </a>
         </div>
@@ -49,18 +53,22 @@
 
         <div class="col col-33" ng-if="$index + 1 < posts.length">
           <a href="#" onclick="window.open('http://www.google.com', '_system', 'location=yes'); return false;">
-            <img ng-src="{{posts[$index + 1].imageUrl}}" width="100%" />
+            <!-- <img class='overlap' ng-src="{{posts[$index + 1].logoImage}}" width="100%" /> -->
+            <img class='underlap' ng-src="{{posts[$index + 1].imageUrl}}" width="100%" />
             <div class='description'>
-              <p class='description_content'>{{posts[$index+1].text.substring(0,25)}}...</p>
+              <p class='description_content'>{{posts[$index+1].text.substring(0,45)}}...</p>
+            
             </div>
           </a>
         </div>
 
         <div class="col col-33" ng-if="$index + 2 < posts.length">
           <a href="#" onclick="window.open('http://www.google.com', '_system', 'location=yes'); return false;">
-            <img ng-src="{{posts[$index + 2].imageUrl}}" width="100%" />
+            <!-- <img class='overlap' ng-src="{{posts[$index + 2].logoImage}}" width="100%" /> -->
+            <img class='underlap' ng-src="{{posts[$index + 2].imageUrl}}" width="100%" />
             <div class='description'>
-              <p class='description_content'>{{posts[$index+2].text.substring(0,25)}}...</p>
+              <p class='description_content'>{{posts[$index+2].text.substring(0,45)}}...</p>
+           
             </div>
           </a>
         </div>

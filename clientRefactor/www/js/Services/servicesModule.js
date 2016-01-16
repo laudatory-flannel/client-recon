@@ -1,0 +1,1 @@
+var servicesModule = angular.module('client-recon.services', []);

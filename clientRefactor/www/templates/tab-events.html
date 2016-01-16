@@ -3,9 +3,8 @@
   <ion-nav-buttons side="primary">
     <button class="button button-clear" ui-sref="tempTab.home({id: friend.userid})"> <i class="icon ion-home"></i></button>
   </ion-nav-buttons>
-
   <ion-nav-buttons side="secondary">
-    <button class="button button-clear" ui-sref="edit({id: friends.id})"> <i class="icon ion-edit"></i>
+    <button class="button button-clear" ui-sref="edit({id: friend.id})"> <i class="icon ion-edit"></i>
     </button>
 </ion-nav-buttons>
 
@@ -24,14 +23,59 @@
       </ul>
   </ion-list>
 
-    <div class="button-bar">
-      <a class="button" ui-sref="posts({id: friend.id})">Posts</a>
-      <a class="button" ui-sref="events({id: friend.id})">Events</a>
-      <a class="button" ui-sref="gifts({id: friend.id})">Gifts</a>
-    </div>
+  <div class="button-bar">
+    <a class="button" ui-sref="posts({id: friend.id})">Posts</a>
+    <a class="button" ui-sref="events({id: friend.id})">Events</a>
+    <a class="button" ui-sref="gifts({id: friend.id})">Gifts</a>
+  </div>
+
+  <h4>Add Event </h4>
+
+<!-- FORM NEEDS NG-CLICK FOR POST -->
+
+<!--   <div class="item item-input-inset">
+    <label class="item-input-wrapper social">
+      <input type="text" placeholder="Event Name" ng-model="newEvent.name" required> 
+    </label>
+    <br>
+    <label class="item-input-wrapper">
+      <input type="datetime-local" placeholder="Date" ng-model="newEvent.date" required> 
+    </label>
+    <br>
+    <button class="button button-small" ng-click="submitForm()" >
+      Submit
+    </button>
+  </div>
+  <div>
+
+  </div> -->
+
+  
+
+  <div class="list list-inset" >
+      <label class="item item-input">
+          <input ng-model="newEvent.name" type="text" placeholder="Event Name" required ng-minlength="2" ng-maxlength="70">
+      </label>
+      <label class="item item-input">
+          <input ng-model="newEvent.date" type="datetime-local" placeholder="Date and Time" required>
+      </label>
+  </div>
+  <div class="padding">
+    <button class="button button-small" ng-click="submitForm()" >
+      Submit
+    </button>
+  </div>
 
 
-  {{friend.name}}'s Events stuff goes here
+  <!-- NEEDS NG REPEAT IN ION ITEM FOR DATA -->
+
+  <ion-list show-delete="false" can-swipe="true">
+    <ion-item ng-repeat="event in events">
+    <h2>{{event.name}}</h2>
+    <p>{{event.date}}</p>
+    <ion-option-button class="button-assertive icon ion-trash-a" ng-click="destroyEvent($index)"></ion-option-button>
+    </ion-item>
+  </ion-list>
+
   </ion-content>
-
 </ion-view>

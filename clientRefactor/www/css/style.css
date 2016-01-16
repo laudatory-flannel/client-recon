@@ -12,25 +12,28 @@ div.col{
     border-radius: 10px; 
 
 }  
+
 div.description{  
-    position:absolute; /* absolute position (so we can position it where we want)*/  
-    bottom:10px; /* position will be on bottom */  
-    left:5px;  
-    width:88%;  
+    position:absolute; 
+    bottom:20px; 
+    left:7px; 
+    
+    width:85%;  
     /* styling bellow */  
-    background-color:rgba(255,250,240,0.7); 
-    font-family: 'tahoma';  
-    font-size:14px;  
+    background-color:rgba(255,255,255,0.8);  
+    font-size:10px; 
+    line-height: 110%; 
     color:black;
     font-weight: bold;  
-    border-radius: 10px;
+    /*border-radius: 8px;*/
     margin: 2px; 
     box-shadow: 0px 0px 4px rgba(100, 100, 100, 0.4);
 } 
 
 p.description_content{ 
     padding:2px;  
-    margin:2px;  
+    margin:2px; 
+    text-align: center; 
 }
 
 img {
@@ -39,4 +42,42 @@ img {
 
 }
 
+.gift {
+    width: 91%;
+}
 
+.giftPic {
+    display:inline-block;
+    height: 50px;
+    width: auto;
+}
+
+.giftInfo {
+    padding: 5px;
+    display:inline-block;
+    height: 50px;
+    width: auto;
+    vertical-align: top;
+}
+
+.social {
+   margin-right: 5px;
+}
+
+.underlap {
+    margin-left:auto;
+    margin-right:auto;
+    position:relative; 
+    border-radius: 10px;
+    box-shadow: 1px 1px 4px 0px rgba(10, 10, 10, .9);
+    
+} 
+
+.overlap {
+    height:35px;
+    left:1px; 
+    position:absolute;
+    top:5px; 
+    width:auto;
+    z-index: 1;
+}

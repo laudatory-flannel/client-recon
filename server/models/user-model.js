@@ -2,7 +2,7 @@ var queryString = require('../../db/psql/index.js');
 var db = require('../../db');
 var _ = require('lodash');
 
-// Non standard passing to confirm to Google signin
+// Non standard passing to conform to Google signin
 exports.addOne = function (userArr, callback) {
 	db.query(queryString.addOneUser, userArr)
 	.then(function (result) {
