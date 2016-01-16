@@ -98,7 +98,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/home/:id/addFriend',
     views: {
       templateUrl: 'templates/add-friend.html',
-      controller: 'AddFriendCtrl'
+      controller: 'AddFriendCtrl',
+      // authenticate: true
     }
   })
   ;

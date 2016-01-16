@@ -37,7 +37,7 @@ angular.module('starter.controllers', ['client-recon.services'])
   };
 })
 
-.controller('AddFriendCtrl', function($scope) {
+.controller('AddFriendCtrl', function($scope, $stateParams, Friends) {
   $scope.friends = {
     name: null,
     title: null,
@@ -51,6 +51,12 @@ angular.module('starter.controllers', ['client-recon.services'])
     twitterUrl:null,
     tumblrUrl:null
   };
+
+  $scope.submit = function() {
+    Friends.addOne($stateParams.id, $scope.friends);
+    console.log('Saving...');
+  };
+
 })
 // .controller('EditCtrl', function($stateParams, $scope, $timeout, Friends) {
 //   // TEMPLATE FOR DATA
