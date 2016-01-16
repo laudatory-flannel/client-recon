@@ -78,8 +78,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         // authenticate: true
   })
 
-  .state('tempTab.home.addFriend', {
-    url: '/home/:id/addFriend',
+  .state('addFriend', {
+    url: '/addFriend',
     views: {
       templateUrl: 'templates/add-friend.html',
       controller: 'AddFriendCtrl',
