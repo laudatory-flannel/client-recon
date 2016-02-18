@@ -31,8 +31,8 @@ module.exports = function(tumblrUsername, twitterUsername, instagramUsername, sm
   console.log( tumblrUsername,twitterUsername,instagramUsername)
 
   var tumblrUrl = (tumblrUsername || 'rachel6bilson') + '.tumblr.com';
-  var twitterUrl = 'https://twitter.com/' + (twitterUsername || 'rachelbilson_6');
-  var instagramUrl = 'https://www.instagram.com/' + (instagramUsername || 'rachel6bilson');
+  var twitterUrl = 'https://twitter.com/' + (twitterUsername || 'rachelbilsonus');
+  var instagramUrl = 'https://www.instagram.com/' + (instagramUsername || 'rachelbilson');
 
   ////////////////////////////
 
@@ -51,6 +51,7 @@ module.exports = function(tumblrUsername, twitterUsername, instagramUsername, sm
     var blog = new tumblr.Blog(tumblrUrl, oauth);
     blog.posts({limit: 6}, function(error, response) {
       if (error) {
+        console.log('ERROR GETTING TUMBLR STUFF')
         throw new Error(error);
       }
 

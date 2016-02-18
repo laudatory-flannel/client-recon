@@ -21,9 +21,8 @@ module.exports = function(app, express, passport) {
 		res.redirect('http://localhost:8100/#/home/' + req.user.id);
 	});
 
-	// THIS IS JUNK I CONJURED UP FOR THE SAKE OF FIXING THE ERROR
+	// 
 	app.get('/api/loginfo', function (req, res) {
-		console.log(req.session.passport.user);
 		res.redirect('/home');
 	})
 
